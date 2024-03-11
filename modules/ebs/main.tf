@@ -4,7 +4,6 @@ provider "aws" {
 
 resource "aws_elastic_beanstalk_application" "custom_application" {
   name        =  var.application_name
-  description =  var.application_discription
 }
 
 resource "aws_elastic_beanstalk_environment" "custom_environment" {
@@ -22,19 +21,13 @@ resource "aws_elastic_beanstalk_environment" "custom_environment" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = var.instance_subnets
+    value     = var.instance_subnet
   }
 
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "InstanceType"
     value     = var.instance_type
-  }
-
-  setting {
-    namespace = "aws:autoscaling:launchconfiguration"
-    name      = "EC2KeyName"
-    value     = var.key_pair
   }
 
   setting {
@@ -52,14 +45,19 @@ resource "aws_elastic_beanstalk_environment" "custom_environment" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    value     = var.elbsubnet1
+    value     = var.elbsubnet
   }
 
   setting {
-    namespace = "aws:ec2:vpc"
-    name      = "ELBSubnets"
-    value     = var.elbsubnet2
+    namespace = "aws:elasticbeanstalk:environment:proxy"
+    name      = "ProxyServer"
+    value     = var.proxy_server
   }
 
+  setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name      = "LoadBalancerType"
+    value     =  var.loadbalancer_type
+  }
 
 }
