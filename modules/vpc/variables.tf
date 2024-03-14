@@ -1,3 +1,7 @@
+variable "provider_config" {
+  type = string
+}
+
 variable "region" {
   type = string
 }
@@ -21,29 +25,49 @@ variable "dns_hostnames" {
   default = "true"
 }
 
-variable "private_subnet_cidr" {
+variable "private_subnet_cidr_1" {
    type = string
 }
 
-variable "private_avl_zone" {
+variable "private_subnet_cidr_2" {
    type = string
 }
 
-variable "public_subnet_cidr" {
+variable "private_avl_zone_1" {
    type = string
 }
 
-variable "public_avl_zone" {
+variable "private_avl_zone_2" {
    type = string
 }
 
+variable "public_subnet_cidr_1" {
+   type = string
+}
 
-variable "public_route1_cidr" {
+variable "public_subnet_cidr_2" {
+   type = string
+}
+
+variable "public_avl_zone_1" {
+   type = string
+}
+
+variable "public_avl_zone_2" {
+   type = string
+}
+
+variable "public_route_cidr" {
    type = string
    default = "0.0.0.0/0"
 }
 
-variable "private_route1_cidr" {
+variable "private_route_cidr_1" {
+   type = string
+   default = "0.0.0.0/0"
+}
+
+variable "private_route_cidr_2" {
    type = string
    default = "0.0.0.0/0"
 }

@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "aws_elastic_beanstalk_application" "custom_application" {
   name        =  var.application_name
 }
